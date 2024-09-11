@@ -1,14 +1,18 @@
 const mongoose = require('mongoose');
-const {dbHost, dbName, dbPass, dbPort, dbUser} = require('../app/config.js')
-mongoose.connect(`mongodb://${dbUser}:${dbPass}@${dbHost}:${dbPort}/${dbName}?authSource=admin`);
+const { dbHost, dbName, dbPass, dbPort, dbUser } = require('../app/config.js');
+
+mongoose.connect(`mongodb://${dbUser}:${dbPass}@${dbHost}:${dbPort}/${dbName}?authSource=admin`)
+    .then(() => {
+        console.log('Database terkoneksi');
+    })
+    .catch(err => {
+        console.error('Gagal terkoneksi:', err);
+    });
 
 const db = mongoose.connection;
 
-db.on('open', () => {
-    // server.listen(port);
-    // server.on('error', onError);
-    // server.on('listening', onListening);
-    console.log('Database running')
-})
+db.on('error', (err) => {
+    console.error('MongoDB error:', err);
+});
 
 module.exports = db;
