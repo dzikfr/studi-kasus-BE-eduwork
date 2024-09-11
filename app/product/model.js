@@ -20,7 +20,11 @@ const productSchema = Schema({
         default: 0
     },
 
-    image_url: String,
+    image_url: {
+        type: String,
+        required: false
+    },
+    
 }, {timestamps: true});
 
 module.exports = model('Product', productSchema);
