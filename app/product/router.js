@@ -14,6 +14,8 @@ const upload = multer({ dest: os.tmpdir() });
 
 router.get('/products', productController.index);
 
+router.get('/products/:id', productController.getProductById);
+
 router.post('/products', upload.single('image'), (req, res, next) => {
   try {
     productController.store(req, res);

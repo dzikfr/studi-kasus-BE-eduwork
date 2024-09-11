@@ -135,6 +135,15 @@ const destroy = async (req, res, next) => {
     }
 }
 
+const getProductById = async (req, res) => {
+    try {
+        const user = await Product.findById(req.params.id);
+        res.json(user);
+    } catch (error) {
+        res.status(404).json({message: error.message});
+    }
+}
+
 const index = async (req, res, next) => {
     try {
         let {skip = 0, limit = 10} = req.query;
@@ -149,5 +158,6 @@ module.exports = {
     store,
     index,
     update,
-    destroy
+    destroy,
+    getProductById
 }
