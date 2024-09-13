@@ -25,6 +25,16 @@ const productSchema = Schema({
         required: false
     },
     
+    category:{
+        type: Schema.Types.ObjectId,
+        ref: 'Category'
+    },
+
+    tags:{
+        type: Schema.Types.ObjectId,
+        ref: 'Tag'
+    }
+
 }, {timestamps: true});
 
 module.exports = model('Product', productSchema);
