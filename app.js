@@ -9,6 +9,7 @@ const productRoute = require('./app/product/router');
 const categoryRoute = require('./app/category/router');
 const tagRoute = require('./app/tag/router');
 const authRoute = require('./app/auth/router');
+const deliveryAddressRoute = require('./app/deliveryAddress/router');
 
 var app = express();
 
@@ -27,6 +28,7 @@ app.use(decodeToken());
 app.use('/api', productRoute);
 app.use('/api', categoryRoute);
 app.use('/api', tagRoute);
+app.use('/api', deliveryAddressRoute);
 app.use('/auth', authRoute);
 
 //home
