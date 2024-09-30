@@ -22,7 +22,7 @@ function decodeToken(){
             if(err && err.name === 'JsonWebTokenError'){
                 return res.json({
                     err: 1,
-                    message: error.message
+                    message: err.message
                 });
             }
             next(err);

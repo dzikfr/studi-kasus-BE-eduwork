@@ -7,5 +7,6 @@ router.get('/delivery-addresses', deliveryController.index);
 router.post('/delivery-addresses', police_check('create', 'DeliveryAddress'), deliveryController.store);
 router.put('/delivery-addresses/:id', police_check('update', 'DeliveryAddress'), deliveryController.update);
 router.delete('/delivery-addresses/:id', police_check('delete', 'DeliveryAddress'), deliveryController.destroy);
+router.get('/delivery-addresses', police_check('view', 'DeliveryAddress'), deliveryController.index)
 
 module.exports = router;
